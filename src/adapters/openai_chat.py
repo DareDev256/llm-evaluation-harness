@@ -6,7 +6,14 @@ import os
 class OpenAIAdapter(BaseAdapter):
     def __init__(self, config: AdapterConfig):
         super().__init__(config)
-        self.client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+        api_key = os.getenv("OPENAI_API_KEY")
+        if not api_key:
+            # warn or use dummy, client might fail on connect but init is safe usually? 
+            # actually openai.OpenAI(api_key=None) fails. 
+            # We'll use a dummy dict or just don't init client yet? 
+            # Better: use dummy if not present to allow instantiation, fail at runtime.
+            api_key = "dummy_key_for_ci_init"
+        self.client = openai.OpenAI(api_key=api_key)
 
     def predict(self, query: str, context: str = None) -> str:
         messages = []

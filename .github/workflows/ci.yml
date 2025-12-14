@@ -19,11 +19,20 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+    - name: Debug Info
+      run: |
+        pwd
+        ls -R
+        pip freeze
     - name: Run Unit Tests
+      env:
+        OPENAI_API_KEY: dummy_ci_key
       run: |
         export PYTHONPATH=$PYTHONPATH:.
-        pytest tests/
+        pytest tests/ -vv
     - name: Run Smoke Eval (Mock)
+      env:
+        OPENAI_API_KEY: dummy_ci_key
       run: |
         export PYTHONPATH=$PYTHONPATH:.
         python -m src.cli.run_eval --config configs/smoke.yaml --data data/smoke_cases.jsonl --output reports/smoke_results.json
