@@ -1,0 +1,5 @@
+adapter:
+  type: mock
+thresholds:
+  pass_rate_min: 1.0
+  judge_avg_min: 0.0

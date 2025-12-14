@@ -1,0 +1,6 @@
+adapter:
+  type: openai_chat
+  model: gpt-4o-mini
+  temperature: 0.0
+thresholds:
+  pass_rate_min: 0.8

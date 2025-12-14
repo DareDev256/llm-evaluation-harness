@@ -1,0 +1,3 @@
+{"id": "fact_1", "category": "factual", "input": {"query": "Who wrote Romeo and Juliet?"}, "expected": {"must_include": ["Shakespeare"]}}
+{"id": "fact_2", "category": "factual", "input": {"query": "What is the chemical symbol for Gold?"}, "expected": {"must_include": ["Au"]}}
+{"id": "rag_1", "category": "rag_grounding", "input": {"query": "Summarize the context.", "context": "The project is about LLM evaluation."}, "expected": {"must_include": ["LLM evaluation"], "citations_required": false}}

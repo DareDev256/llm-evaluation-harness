@@ -1,0 +1,2 @@
+{"id": "smoke_1", "category": "factual", "input": {"query": "What is the capital of France?"}, "expected": {"must_include": ["Paris"], "citations_required": true}}
+{"id": "smoke_2", "category": "summary", "input": {"query": "Tell me a fact."}, "expected": {"must_include": ["fact"], "max_words": 20}}
