@@ -16,18 +16,18 @@ class EvalRunner:
         self.adapter = self._init_adapter(config.adapter)
         
         # Evaluators
-        self.semantic_eval = semantic.SemanticEvaluator()
+        self.semantic_eval = semantic.SemanticEvaluator() if config.enable_semantic else None
         
         # Judge needs OpenAI adapter usually
         # For simplicity, if adapter is mock, judge uses mock too? 
         # Requirement says judge "must be deterministic".
         # We will use OpenAIAdapter for judge if config allows, or fallback to mock if in mock mode.
         if config.adapter.type == "mock":
-             self.judge = JudgeEvaluator(MockAdapter(config.adapter))
+            self.judge = JudgeEvaluator(MockAdapter(config.adapter))
         else:
-             # Judge usually uses a strong model like gpt-4
-             judge_config = config.adapter.model_copy(update={"model": "gpt-4o", "temperature": 0})
-             self.judge = JudgeEvaluator(OpenAIAdapter(judge_config))
+            # Judge usually uses a strong model like gpt-4
+            judge_config = config.adapter.model_copy(update={"model": "gpt-4o", "temperature": 0})
+            self.judge = JudgeEvaluator(OpenAIAdapter(judge_config))
 
     def _init_adapter(self, config) -> BaseAdapter:
         if config.type == "mock":
@@ -78,7 +78,7 @@ class EvalRunner:
         # { "must_include": ["..."], ... }
         # I'll join must_include as reference for now if present.
         semantic_score = 0.0
-        if case.expected.must_include:
+        if self.semantic_eval and case.expected.must_include:
             reference = " ".join(case.expected.must_include)
             semantic_score = self.semantic_eval.compute_similarity(output, reference)
             

@@ -52,3 +52,4 @@ class AdapterConfig(BaseModel):
 class RunConfig(BaseModel):
     adapter: AdapterConfig
     thresholds: Dict[str, float] = Field(default_factory=dict)
+    enable_semantic: bool = True
