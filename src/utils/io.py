@@ -1,5 +1,6 @@
 import json
 import yaml
+from pathlib import Path
 from typing import List, Any, Type
 from pydantic import BaseModel
 
@@ -16,6 +17,8 @@ def read_jsonl(path: str, model: Type[BaseModel] = None) -> List[Any]:
     return data
 
 def write_json(data: Any, path: str):
+    # Ensure parent directory exists
+    Path(path).parent.mkdir(parents=True, exist_ok=True)
     with open(path, 'w') as f:
         json.dump(data, f, indent=2, default=str)
 
