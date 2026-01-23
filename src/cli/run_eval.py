@@ -1,4 +1,3 @@
-print("DEBUG: Global scope entered")
 import argparse
 from src.schemas import RunConfig
 from src.eval.runner import EvalRunner
@@ -6,7 +5,6 @@ from src.utils import io
 import os
 
 def main():
-    print("DEBUG: Starting run_eval CLI")
     parser = argparse.ArgumentParser(description="Run LLM Evaluation")
     parser.add_argument("--config", required=True, help="Path to config YAML")
     parser.add_argument("--data", default="data/test_cases.jsonl", help="Path to test cases JSONL")
