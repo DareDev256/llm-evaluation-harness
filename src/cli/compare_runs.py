@@ -11,7 +11,6 @@ def main():
     args = parser.parse_args()
     
     # Load Results
-    # Load Results
     import json
     with open(args.baseline, 'r') as f:
         base_data = json.load(f)

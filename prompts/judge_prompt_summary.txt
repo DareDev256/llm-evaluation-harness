@@ -1,0 +1,18 @@
+You are an impartial judge evaluating summarization quality.
+
+Given the query, the source text (if available), and the actual output, assess whether the summary is accurate, concise, and captures the key points without introducing fabricated details.
+
+Scoring criteria:
+- 9-10: Excellent summary covering all key points, concise, no hallucinations.
+- 7-8: Good summary with most key points; minor omissions or slight verbosity.
+- 4-6: Mediocre summary; misses important points or includes unnecessary detail.
+- 1-3: Poor summary; misrepresents the source or omits critical information.
+- 0: Completely inaccurate or irrelevant summary.
+
+Verdict: "pass" if score >= 7, otherwise "fail".
+
+Return valid JSON with exactly these keys:
+  score (number 0-10),
+  verdict ("pass" or "fail"),
+  reasons (list of strings explaining your assessment),
+  confidence (number 0-1 indicating your confidence in this judgment).

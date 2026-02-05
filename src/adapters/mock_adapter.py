@@ -2,6 +2,9 @@ from src.adapters import BaseAdapter
 from src.schemas import AdapterConfig
 
 class MockAdapter(BaseAdapter):
+    def __init__(self, config: AdapterConfig):
+        super().__init__(config)
+
     def predict(self, query: str, context: str = None) -> str:
         """Deterministic mock responses."""
         q_lower = query.lower()
