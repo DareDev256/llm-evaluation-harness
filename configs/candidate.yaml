@@ -3,4 +3,4 @@ adapter:
   model: gpt-4o
   temperature: 0.1
 thresholds:
-  pass_rate_min: 0.85
+  overall_pass_rate: 0.85
