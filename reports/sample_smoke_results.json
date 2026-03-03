@@ -1,0 +1,43 @@
+{
+  "config": {
+    "adapter": {"type": "mock"},
+    "thresholds": {"overall_pass_rate": 1.0, "avg_score": 0.0},
+    "enable_semantic": false
+  },
+  "results": [
+    {
+      "test_id": "smoke_1",
+      "category": "factual",
+      "output_text": "The capital of France is Paris [1].",
+      "rule_results": [
+        {"rule_name": "must_include", "passed": true, "details": "All required phrases present"},
+        {"rule_name": "citations_required", "passed": true, "details": "Citation found"}
+      ],
+      "semantic_score": null,
+      "judge_result": {"score": 10.0, "verdict": "pass", "reasons": ["Perfect factual answer"], "confidence": 1.0},
+      "passed_overall": true,
+      "latency_ms": 1.2
+    },
+    {
+      "test_id": "smoke_2",
+      "category": "summary",
+      "output_text": "This is a mock fact response.",
+      "rule_results": [
+        {"rule_name": "must_include", "passed": true, "details": "All required phrases present"},
+        {"rule_name": "max_words", "passed": true, "details": "Count: 6, Max: 20"}
+      ],
+      "semantic_score": null,
+      "judge_result": {"score": 10.0, "verdict": "pass", "reasons": ["Adequate response"], "confidence": 1.0},
+      "passed_overall": true,
+      "latency_ms": 0.8
+    }
+  ],
+  "summary": {
+    "total": 2,
+    "passed": 2,
+    "failed": 0,
+    "pass_rate": 1.0,
+    "avg_judge_score": 10.0,
+    "avg_latency_ms": 1.0
+  }
+}
