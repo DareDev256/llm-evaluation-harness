@@ -1,5 +1,7 @@
 # LLM Evaluation Harness
 
+[![CI](https://github.com/DareDev256/llm-evaluation-harness/actions/workflows/ci.yml/badge.svg)](https://github.com/DareDev256/llm-evaluation-harness/actions/workflows/ci.yml)
+
 Evaluation and regression testing harness for LLM and RAG systems. Detects quality drift across prompt versions, model swaps, and retrieval configuration changes through a combination of rule-based checks, semantic similarity, and LLM-as-a-Judge scoring.
 
 ## Architecture
@@ -120,7 +122,7 @@ llm-evaluation-harness/
 │   ├── judge_prompt_refusal.txt
 │   ├── judge_prompt_rag_grounding.txt
 │   └── judge_prompt_generic.txt   # Fallback rubric
-├── tests/                         # 36 unit tests
+├── tests/                         # pytest suite, 6 files
 ├── reports/                       # Generated on eval runs
 ├── .github/workflows/ci.yml       # GitHub Actions pipeline
 ├── Dockerfile                     # Containerized eval runs
@@ -253,6 +255,6 @@ Regressions: 2
 - **pandas** for metric aggregation
 - **Rich** for terminal formatting
 - **httpx** for async HTTP (RAG adapter)
-- **pytest** for testing (36 tests)
+- **pytest** for testing
 - **GitHub Actions** for CI
 - **Docker** for containerized runs
